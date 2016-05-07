@@ -1,0 +1,9 @@
+/* addtional css, loaded last */
+
+.item.header {
+	padding-bottom: 0px;
+}
+
+#pricing_table1 {
+	padding-top: 0px;
+}

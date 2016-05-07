@@ -12,6 +12,7 @@
             '@NoIncSimpleStorefrontBundle/Resources/public/css/flat-ui.css'
             '@NoIncSimpleStorefrontBundle/Resources/public/css/style.css'
             '@NoIncSimpleStorefrontBundle/Resources/public/css/style.complete.css'
+	    '@NoIncSimpleStorefrontBundle/Resources/public/css/style.custom.css'
         filter='cssrewrite' %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -25,8 +26,9 @@
     <![endif]-->
     
     <!--headerIncludes-->
-     
-    
+	
+    {% include 'NoIncSimpleStorefrontBundle:Default:menu-options.html.twig' %}
+
 </head>
 
 
