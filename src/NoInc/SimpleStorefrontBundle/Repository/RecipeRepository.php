@@ -25,4 +25,31 @@ class RecipeRepository extends \Doctrine\ORM\EntityRepository
         
         return $recipes;
     }
+//rewrite as update query
+	public function getRecipeIngredientNewStocks()
+	{
+		$difference = $this->createQueryBuilder('recipe')
+		->addSelect('(ingredient.stock - recipeIngredients.quantity) as newStock')
+		->join('recipe.recipeIngredients', 'recipeIngredients')
+		->join('recipeIngredients.ingredient', 'ingredient')
+		->getQuery()
+		->getResult();
+
+		return $difference;
+	}
+
+	public function findRecipeIngredientOutOfStocks($param = null)
+	{
+		$negatives = $this->createQueryBuilder('recipe')
+		->addSelect('(ingredient.stock - recipeIngredients.quantity) as newStock')
+		->join('recipe.recipeIngredients', 'recipeIngredients')
+		->join('recipeIngredients.ingredient', 'ingredient')
+		->where('recipe.name = ?1')
+		->andWhere('(ingredient.stock - recipeIngredients.quantity) <= 0')
+		->setParameter(1,$param)
+		->getQuery()
+		->getResult();
+
+		return $negatives;
+	}
 }

@@ -40,13 +40,15 @@ class AdminController extends Controller
      */
     public function postMakeRecipeAction(Recipe $recipe)
     {
+		if( !($this->getDoctrine()->getRepository('NoIncSimpleStorefrontBundle:Recipe')->findRecipeIngredientOutOfStocks($recipe->getName())) )
+		{
+        	$product = new Product();
+        	$product->setCreatedAt(time());
+        	$product->setRecipe($recipe);
+        	$this->getDoctrine()->getEntityManager()->persist($product);
+        	$this->getDoctrine()->getEntityManager()->flush();
+        }
 
-        $product = new Product();
-        $product->setCreatedAt(time());
-        $product->setRecipe($recipe);
-        $this->getDoctrine()->getEntityManager()->persist($product);
-        $this->getDoctrine()->getEntityManager()->flush();
-        
         return $this->redirectToRoute('admin_home');
     }
     
@@ -57,7 +59,7 @@ class AdminController extends Controller
      */
     public function postBuyIngredientAction(Ingredient $ingredient)
     {
-            
+       	     
         return $this->redirectToRoute('admin_home');
     }
     
