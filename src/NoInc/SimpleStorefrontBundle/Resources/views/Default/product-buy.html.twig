@@ -8,7 +8,9 @@
 			<h2 class="editContent">{{ recipe.name }}</h2>
 			
 			<p class="price "><b class="editContent">${{ recipe.price }}</b></p>
-		
+			<p class="recipeImage">
+				<img src="{{ asset('/images/'~ recipe.name|lower|replace({ ' ': '_' }) ~'.jpg') }}" alt={{ recipe.name }}" />
+			</p>	
 		</div><!-- /.top -->
 		
 		
