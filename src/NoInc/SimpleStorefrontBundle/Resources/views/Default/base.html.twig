@@ -26,8 +26,15 @@
     <![endif]-->
     
     <!--headerIncludes-->
-	
-    {% include 'NoIncSimpleStorefrontBundle:Default:menu-options.html.twig' %}
+	{% if is_granted('ROLE_ADMIN') %}
+
+		{% include 'NoIncSimpleStorefrontBundle:Default:admin-menu.html.twig' %}
+
+	{% else %}
+
+    	{% include 'NoIncSimpleStorefrontBundle:Default:guest-menu.html.twig' %}
+
+	{% endif %}	
 
 </head>
 
