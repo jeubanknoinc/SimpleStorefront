@@ -3,16 +3,20 @@
 {% block body %} 
 	<div class="item pricing" id="pricing_table1">
 		
-		<div class="container">
-		
+		<div class="container">	
+
+			<h2 class="text-center">
+
+				Make Products
+
+			</h2>
+
 			<div class="row">
-			
+
 				{% for recipe in recipes %}
-				    {% include 'NoIncSimpleStorefrontBundle:Default:product-make.html.twig' with {'recipe': recipe} %}
+					{% include 'NoIncSimpleStorefrontBundle:Default:product-make.html.twig' with {'recipe': recipe} %}
 				{% endfor %}
 				
-
-			
 			</div><!-- /.row -->
 
 		</div><!-- /.container -->
@@ -23,15 +27,24 @@
 
 		<div class="container">
 		
-			<div class="row">
+			<div class="panel panel-default">
 
-				{% for recipe in recipes %}
-					{% for recipeIngredient in recipe.recipeIngredients %}
-						{% include 'NoIncSimpleStorefrontBundle:Default:ingredient-buy.html.twig' with {'ingredient': recipeIngredient.ingredient} %}				
-					{% endfor %}
-				{% endfor %}			
+				<h2 class="text-center">
 
-			</div><!-- /.row -->
+					Buy Ingredients
+				
+				</h2>
+
+				<div class="panel-body">
+
+					{% for recipe in recipes %}
+						{% for recipeIngredient in recipe.recipeIngredients %}
+							{% include 'NoIncSimpleStorefrontBundle:Default:ingredient-buy.html.twig' with {'ingredient': recipeIngredient.ingredient} %}				
+						{% endfor %}
+					{% endfor %}			
+				</div><!-- /.panel-body -->
+
+			</div><!-- /.panel.panel-default -->
 
 		</div><!-- /.container -->
 
