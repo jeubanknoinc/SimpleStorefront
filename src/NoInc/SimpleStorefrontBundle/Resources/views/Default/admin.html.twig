@@ -10,12 +10,32 @@
 				{% for recipe in recipes %}
 				    {% include 'NoIncSimpleStorefrontBundle:Default:product-make.html.twig' with {'recipe': recipe} %}
 				{% endfor %}
+				
+
 			
 			</div><!-- /.row -->
-		
+
 		</div><!-- /.container -->
 	
 	</div><!-- /.item -->
+
+	<div class="ingredient pricing" id="pricing_table2">
+
+		<div class="container">
+		
+			<div class="row">
+
+				{% for recipe in recipes %}
+					{% for recipeIngredient in recipe.recipeIngredients %}
+						{% include 'NoIncSimpleStorefrontBundle:Default:ingredient-buy.html.twig' with {'ingredient': recipeIngredient.ingredient} %}				
+					{% endfor %}
+				{% endfor %}			
+
+			</div><!-- /.row -->
+
+		</div><!-- /.container -->
+
+	</div><!-- /.ingredient -->
 	
 	{{ dump(recipes) }}
 {% endblock %}

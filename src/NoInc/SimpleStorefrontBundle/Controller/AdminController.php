@@ -58,8 +58,16 @@ class AdminController extends Controller
      * @ParamConverter("ingredient", class="NoIncSimpleStorefrontBundle:Ingredient", options={"mapping": {"ingredient_id": "id"}})
      */
     public function postBuyIngredientAction(Ingredient $ingredient)
-    {
-       	     
+    {			
+		if(!($ingredient->getStock())) {
+			throw $this->createNotFoundException(
+				'Stock not properly set for '.$ingredient->getName()
+			);
+		}
+
+		$ingredient->setStock($ingredient->getStock() +1);
+		$this->getDoctrine()->getEntityManager()->flush();
+	
         return $this->redirectToRoute('admin_home');
     }
     
