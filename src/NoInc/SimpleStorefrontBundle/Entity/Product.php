@@ -42,6 +42,13 @@ class Product
      */
     protected $created_at;
 
+	/**
+	 * Whether the product is in a Cart
+	 *
+	 * @ORM\Column(type="integer", nullable=false)
+	 */
+	protected $cart_flag;
+
     /**
      * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="products")
      * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id", nullable=false)
@@ -121,6 +128,29 @@ class Product
         return $this->created_at;
     }
 
+	/**
+	 * Set the value of cart_flag.
+	 *
+	 * @param integer $cart_flag
+	 * @return \NoInc\SimpleStorefrontBundle\Entity\Product
+	 */
+	public function setCartFlag($cart_flag)
+	{
+		$this->cart_flag = $cart_flag;
+
+		return $this;
+	}
+
+	/**
+	 * Get the value of cart_flag.
+	 *
+	 * @return integer
+	 */
+	public function getCartFlag()
+	{
+		return $this->cart_flag;
+	}
+
     /**
      * Set Recipe entity (many to one).
      *
@@ -146,6 +176,6 @@ class Product
 
     public function __sleep()
     {
-        return array('id', 'recipe_id', 'created_at');
+        return array('id', 'recipe_id', 'created_at', 'cart_flag');
     }
 }

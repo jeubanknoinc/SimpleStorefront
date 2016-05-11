@@ -45,6 +45,7 @@ class AdminController extends Controller
         	$product = new Product();
         	$product->setCreatedAt(time());
         	$product->setRecipe($recipe);
+		$product->setCartFlag(0);
         	$this->getDoctrine()->getEntityManager()->persist($product);
         	$this->getDoctrine()->getEntityManager()->flush();
         }

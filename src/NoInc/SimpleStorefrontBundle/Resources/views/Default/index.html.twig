@@ -23,5 +23,33 @@
 		</div><!-- /.container -->
 	
 	</div><!-- /.item -->
+
+    <div class="shopping cart" id="pricing_table3">
+
+        <div class="container">
+
+                    <h2 class="text-center">Shopping Cart</h2>
+
+                    <div class="col-md-4 col-md-offset-4">
+                    {% for recipe in recipes %}
+                        {% for product in recipe.products %}
+                            {% if product.cartflag == 1 %}
+                                
+                                <div class="pricing1">
+                                    <div class="top">
+                                        <h2 class="editContent">{{ recipe.name }}</h2>
+                                {% include 'NoIncSimpleStorefrontBundle:Default:cart-item-delete.html.twig' with {'recipe': recipe} %}
+                                    </div>
+                                </div>
+                                
+                            {% endif %}
+                        {% endfor %}
+                    {% endfor %}
+                    {% include 'NoIncSimpleStorefrontBundle:Default:cart-clear.html.twig' %}
+                    </div><!-- /.col-md-4 -->
+
+        </div><!-- /.container -->
+
+    </div><!-- /.cart -->
 	
 {% endblock %}

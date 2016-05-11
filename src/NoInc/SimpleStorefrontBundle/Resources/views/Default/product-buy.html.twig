@@ -25,13 +25,18 @@
 			</ul>
 			</div><!-- /.editContent -->
 			
-			{% set remainingProducts = recipe.products|length %}
+			{% set eligCount = 0 %}
+			{% for product in recipe.products %}
+			{% if product.cartflag == 0 %}
+				{% set eligCount = eligCount + 1 %}
+			{% endif %}
+			{% endfor %}
 			
-			{% if remainingProducts > 0 %}
+			{% if eligCount > 0 %}
 				<button type="submit" class="btn btn-lg btn-embossed btn-block btn-primary"><span class="fa"></span>Buy One</button>
 			{% endif %}
 			
-			<span>{{ remainingProducts }} Remaining</span>
+			<span>{{ eligCount }} Remaining</span>
 			
 		</div><!-- /.bottom -->
 	
