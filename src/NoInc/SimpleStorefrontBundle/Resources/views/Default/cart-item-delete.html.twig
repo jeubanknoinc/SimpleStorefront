@@ -1,5 +1,7 @@
-<form action="{{ path('clear_recipe', {'recipe_id': recipe.id}) }}" method="post">
-
-    <button type="submit" class="btn btn-lg btn-embossed btn-block btn-primary"><span class="fa"></span>Remove Item</button>
+<form class="form-inline" action="{{ path('clear_recipe', {'recipe_id': recipe.id}) }}" method="post">
+   <div class="form-group">
+        <div> {{ recipe.name }}</div>
+    </div>
+    <button type="submit" class="btn btn-sm btn-embossed btn-primary">Remove Item</button>
 
 </form>

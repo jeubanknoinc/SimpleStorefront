@@ -1,54 +1,47 @@
 {% extends 'NoIncSimpleStorefrontBundle:Default:base.html.twig' %}
 
 {% block body %} 
-	<div class="item pricing" id="pricing_table1">
-		
-		<div class="container">	
 
-			<h2 class="text-center">
+<div class="container">
 
-				Make Products
+    <ul class="nav nav-pills">
 
-			</h2>
+        <li class="active"><a data-toggle="pill" href="#pricing_table1">Make Products</a></li>
 
-			<div class="row">
+        <li><a data-toggle="pill" href="#pricing_table2">Buy Ingredients</a></li>
+
+    </ul>
+
+	<div class="tab-content">
+
+        <div class="tab-pane fade in active" id="pricing_table1">
+
+	        <div class="row">
 
 				{% for recipe in recipes %}
 					{% include 'NoIncSimpleStorefrontBundle:Default:product-make.html.twig' with {'recipe': recipe} %}
 				{% endfor %}
 				
 			</div><!-- /.row -->
+    
+	    </div><!-- /.tab-pane -->
 
-		</div><!-- /.container -->
-	
-	</div><!-- /.item -->
+        <div class="tab-pane fade" id="pricing_table2">
 
-	<div class="ingredient pricing" id="pricing_table2">
-
-		<div class="container">
-		
-			<div class="panel panel-default">
-
-				<h2 class="text-center">
-
-					Buy Ingredients
-				
-				</h2>
-
-				<div class="panel-body">
+	        <div class="row">
 
 					{% for recipe in recipes %}
 						{% for recipeIngredient in recipe.recipeIngredients %}
 							{% include 'NoIncSimpleStorefrontBundle:Default:ingredient-buy.html.twig' with {'ingredient': recipeIngredient.ingredient} %}				
 						{% endfor %}
 					{% endfor %}			
-				</div><!-- /.panel-body -->
+				
+            </div><!-- /.row -->
 
-			</div><!-- /.panel.panel-default -->
-
-		</div><!-- /.container -->
-
-	</div><!-- /.ingredient -->
+	    </div><!-- /.tab-pane -->
 	
+    </div><!-- /.tab-content -->
+
+</div><!-- /.container -->
 	{{ dump(recipes) }}
 {% endblock %}

@@ -25,20 +25,47 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
     
-    <!--headerIncludes-->
+    <header class="item header margin-top-0 header10" id="header10"
+    
+        <div class="wrapper">
+
+            <nav class="navbar navbar-default" role="navigation">
+    
+                <div class="container">
+
+    				<div class="navbar-header">
+
+	    				<button data-target="#navbar-collapse-02" data-toggle="collapse" class="pull-left navbar-toggle" type="button">
+            
+            				<span class="sr-only">Toggle navigation</span>
+        
+        				</button>
+
+    				</div><!-- /.navbar-header -->
+
+    				<div id="navbar-collapse-02" class="collapse navbar-collapse">
+
+        				<ul class="nav navbar-nav navbar-left">
+                        
 	{% if is_granted('ROLE_ADMIN') %}
-
-		{% include 'NoIncSimpleStorefrontBundle:Default:admin-menu.html.twig' %}
-
+            <li class="propClone"><a href="/logout">Logout</a></li>
 	{% else %}
-
-    	{% include 'NoIncSimpleStorefrontBundle:Default:guest-menu.html.twig' %}
-
+            <li class="propClone"><a href="/login">Login</a></li>
 	{% endif %}	
+        				</ul>
+
+    				</div><!-- /.navbar-collapse -->
+
+				</div><!-- /.container -->
+
+			</nav>
+
+		</div><!-- /.wrapper -->
+
+	</div><!-- /.item.header -->	
+			
 
 </head>
-
-
 
 
 <body>   
